@@ -1,0 +1,11 @@
+gay: 	 C9C9C9
+lgray: 	 E2E2E2
+blue:	 C0DAF0
+lblue:	 D4E9FF
+dblue:	 4A5ED8
+yellow:  F7BF4F
+dyellow: DBA740
+
+
+@juicy_fish
+https://www.flaticon.com/authors/juicy-fish

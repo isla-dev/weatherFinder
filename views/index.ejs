@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lisper</title>
+  <!--Google Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Poiret+One&family=Sacramento&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!--CSS Rules-->
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+ <!--jQuery-->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <section class="main-body">  
+
+    <img class="background-image" src="images/arts/life is strange theme background.jpg" alt="">
+    <div class="get-state">
+      <!-- The button of get location-->
+      <form class="find-state-auto" action="/getLocation" method="post">
+        <input id="lon" type="hidden" value="" name ="lon">
+        <input id="lat" type="hidden" value="" name ="lat">
+        <button type="submit" onclick="getLocation()"><img src="images/icons/location-pin.png" alt=""></button>
+      </form>
+      <p>/</p>
+      <!-- Search for a state-->
+      <form class="find-state" action="/weather" method="post">
+        <input type="text" name ="state" autofocus>
+        <button type="submit" ><img src="images/icons/magnifying-glass.png" alt=""></button>
+      </form>
+    </div>
+
+    <div class="side-bar">
+
+    </div>
+
+    <!-- THE WEATHER CARD -------------------------------------------------------->
+    <div class="blokken weather-card">
+      <%if(locals.content) {%>
+    
+        <div class="info">
+
+          <div class="top">
+
+            <!-- DATE -->
+            <div class="date">
+              <p class="today"><!--day--></p>
+              <p class="today-date"><!--dd mm year--></p>
+            </div>
+            
+            <!-- Temperature -->
+            <div class="temperature">
+              <h1><%= Math.round(content.main.temp) %>°</h1>
+              <img src="images/icons/<%= content.weather[0].icon %>.png" />
+            </div>  
+
+        </div>
+          <!-- Extra -->
+          <div class="extra">
+            <div class="extra-top">
+              <p id="state"><%= content.name %></p>
+              <p id="weather-desc"><%= content.weather[0].description %></p>
+            </div>
+
+            
+
+            <div class="extra-info">
+
+                <div class="object">
+                  <img src="images/icons/windsock.png" alt="">  
+                  <p><%=content.wind.speed%> m/s</p>
+                </div>
+  
+                <div class="object">
+                  <img src="images/icons/humidity.png" alt="">
+                  <p><%=content.main.humidity%> %</p>
+                </div>
+  
+                <div class="object">
+                  <img src="images/icons/pressure.png" alt="">   
+                  <p><%=content.main.pressure%> hPa</p>
+                </div>
+
+            </div>
+            
+            
+          </div>
+        
+          
+
+        </div>
+        
+        <div class="art">
+          
+          <div class="tape-top">
+            <div class="tape top-left"></div>
+            <div class="tape top-right"></div>
+          </div>
+          
+          <img src="images/arts/<%= content.weather[0].description %>.gif" alt="">
+          
+          <div class="tape-bottom">
+            <div class="tape bottom-left"></div>
+            <div class="tape bottom-right"></div>
+          </div>
+        
+        </div>
+        
+      <%}%>
+      
+    </div>
+
+    <section class="footer">
+      <p>2023©</p>
+    </section>
+
+  </section>
+
+</body>
+<script src="/scripts/action.js"></script>
+</html>
